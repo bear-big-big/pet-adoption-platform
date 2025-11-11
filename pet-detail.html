@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>宠物详情 - 宠物领养平台</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>宠物领养平台</h1>
+    <nav>
+      <a href="index.html">首页</a>
+      <a href="adoption-records.html">领养记录</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="pet-detail" id="petDetail">
+      <!-- 宠物详情将通过JS动态生成 -->
+    </section>
+
+    <section class="adoption-form">
+      <h2>领养申请</h2>
+      <form id="adoptForm">
+        <input type="hidden" id="petId"> <!-- 存储当前宠物ID -->
+        <div>
+          <label>姓名:</label>
+          <input type="text" name="name" required>
+        </div>
+        <div>
+          <label>邮箱:</label>
+          <input type="email" name="email" required>
+        </div>
+        <div>
+          <label>电话:</label>
+          <input type="tel" name="phone" required>
+        </div>
+        <div>
+          <label>地址:</label>
+          <textarea name="address" required></textarea>
+        </div>
+        <button type="submit" class="btn">提交申请</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/pet-detail.js"></script>
+</body>
+</html>

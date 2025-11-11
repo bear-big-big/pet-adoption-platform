@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>宠物领养平台 - 首页</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>宠物领养平台</h1>
+    <nav>
+      <a href="index.html" class="active">首页</a>
+      <a href="adoption-records.html">领养记录</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="filter">
+      <input type="text" id="search" placeholder="搜索宠物名称...">
+      <select id="petType">
+        <option value="">所有类型</option>
+        <option value="猫">猫</option>
+        <option value="狗">狗</option>
+        <option value="其他">其他</option>
+      </select>
+    </section>
+
+    <section class="pet-list" id="petList">
+      <!-- 宠物卡片将通过JS动态生成 -->
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>
