@@ -27,7 +27,7 @@ async function loadAvailablePets() {
       const petCard = document.createElement('div')
       petCard.className = 'pet-card'
       petCard.innerHTML = `
-        <img src="${pet.image_url || 'https://via.placeholder.com/200'}" alt="${pet.name}">
+        img src="${pet.image_url || 'https://picsum.photos/id/237/200'}"
         <h3>${pet.name}</h3>
         <p>类型: ${pet.type}</p>
         <p>年龄: ${pet.age}岁</p>
