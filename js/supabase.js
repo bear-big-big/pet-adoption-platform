@@ -1,9 +1,4 @@
-// 替换为你的Supabase项目信息（从Supabase控制台获取）
+import { createClient } from '@supabase/supabase-js'
 const supabaseUrl = 'https://rvkzslbnjorbpwgmrsso.supabase.co'
-const supabaseKey = 'sb_publishable_Lz1eyGlI4cDHTI-AZOLq8A_ft_QqWTd'
-
-const { createClient } = supabase
-const supabase = createClient(supabaseUrl, supabaseKey)
-
-// 导出供其他页面使用
-window.supabase = supabase
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2a3pzbGJuam9yYnB3Z21yc3NvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI4MTU0MzcsImV4cCI6MjA3ODM5MTQzN30.lydL1j6Wfk5n3kqC7pZO-yjgVRNlMioZXUmXAGvRPVw'
+export const supabase = createClient(supabaseUrl, supabaseKey)
