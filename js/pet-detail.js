@@ -12,7 +12,7 @@ function getPetId() {
       return
     }
   
-    const { data, error } = await supabase
+    const { data, error } = await window.supabase
       .from('pets')
       .select('*')
       .eq('id', petId)
@@ -50,7 +50,7 @@ function getPetId() {
     const petId = document.getElementById('petId').value
   
     // 1. 创建领养人记录
-    const { data: adopter, error: adopterError } = await supabase
+    const { data: adopter, error: adopterError } = await window.supabase
       .from('adopters')
       .insert([{
         name: formData.get('name'),
@@ -67,7 +67,7 @@ function getPetId() {
     }
   
     // 2. 创建领养记录
-    const { error: adoptionError } = await supabase
+    const { error: adoptionError } = await window.supabase
       .from('adoptions')
       .insert([{
         pet_id: petId,

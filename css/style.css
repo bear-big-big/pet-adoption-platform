@@ -1,25 +1,49 @@
-/* 全局美化 */
-body {
-  background-color: #f9f9f9;
-  color: #333;
+/* 全局基础样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* 头部导航优化 */
+body {
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* 头部导航样式 */
 header {
   background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
   padding: 1.5rem 2rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  color: #263238;
+  margin-bottom: 0.8rem;
+}
+
+nav {
+  display: flex;
+  gap: 1.5rem;
 }
 
 nav a {
+  color: #263238;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  font-weight: 500;
   position: relative;
   transition: all 0.3s ease;
 }
 
 nav a:hover {
-  background-color: rgba(255,255,255,0.3);
-  transform: translateY(-2px);
+  color: white;
+}
+
+nav a.active {
+  color: white;
 }
 
 nav a.active::after {
@@ -33,39 +57,212 @@ nav a.active::after {
   border-radius: 3px;
 }
 
-/* 按钮美化 */
+/* 主内容区样式 */
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* 按钮通用样式 */
 .btn {
   background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1rem;
   transition: all 0.3s ease;
   transform: translateY(0);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .btn:hover {
   background: linear-gradient(135deg, #43A047 0%, #2E7D32 100%);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* 宠物卡片美化 */
+/* 筛选栏样式 */
+.filter {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.filter input,
+.filter select {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  flex: 1;
+  min-width: 200px;
+}
+
+/* 宠物列表样式 */
+.pet-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
 .pet-card {
-  transition: all 0.3s ease;
+  background: white;
   border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .pet-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .pet-card img {
+  width: 100%;
   height: 220px;
+  object-fit: cover;
   transition: transform 0.5s ease;
 }
 
 .pet-card:hover img {
   transform: scale(1.05);
+}
+
+.pet-card h3,
+.pet-card p {
+  padding: 0 1rem;
+}
+
+.pet-card h3 {
+  margin: 1rem 0 0.5rem;
+  color: #2E7D32;
+}
+
+.pet-card .btn {
+  display: block;
+  margin: 1rem;
+  text-align: center;
+}
+
+/* 宠物详情页样式 */
+.pet-detail {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.pet-detail img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.pet-info h2 {
+  color: #2E7D32;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pet-info p {
+  margin: 0.8rem 0;
+  line-height: 1.8;
+}
+
+/* 领养表单样式 */
+.adoption-form {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.adoption-form h2 {
+  color: #2E7D32;
+  margin-bottom: 1rem;
+}
+
+.adoption-form form {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.adoption-form input,
+.adoption-form textarea {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.adoption-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* 领养记录页样式 */
+.records-container {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+#recordsTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+#recordsTable th,
+#recordsTable td {
+  padding: 0.8rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+#recordsTable th {
+  background-color: #f5f5f5;
+  color: #2E7D32;
+}
+
+.status {
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.status.pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status.approved {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status.rejected {
+  background-color: #f8d7da;
+  color: #721c24;
 }
 
 /* 关于我们页面样式 */
@@ -85,19 +282,17 @@ nav a.active::after {
 .about-img img {
   width: 100%;
   border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.about-text h2, .about-features h2, .contact-info h2 {
+.about-text h2,
+.about-features h2,
+.contact-info h2 {
   color: #2E7D32;
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-}
-
-.about-text h2 i, .about-features h2 i, .contact-info h2 i {
-  font-size: 1.5rem;
 }
 
 .features-grid {
@@ -112,13 +307,13 @@ nav a.active::after {
   padding: 2rem;
   border-radius: 12px;
   text-align: center;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
 }
 
 .feature-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .feature-card i {
@@ -131,7 +326,7 @@ nav a.active::after {
   background: white;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .contact-details p {
@@ -173,13 +368,29 @@ footer {
   transform: scale(1.2);
 }
 
-/* 响应式优化 */
+/* 响应式适配 */
 @media (max-width: 768px) {
+  .pet-detail,
   .about-intro {
     grid-template-columns: 1fr;
   }
-  
+
   .features-grid {
     grid-template-columns: 1fr;
+  }
+
+  nav {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter {
+    flex-direction: column;
+  }
+
+  .filter input,
+  .filter select {
+    min-width: 100%;
   }
 }

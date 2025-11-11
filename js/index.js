@@ -1,6 +1,6 @@
 // 页面加载时获取可领养宠物
 async function loadAvailablePets() {
-    const { data, error } = await supabase
+    const { data, error } = await window.supabase
       .from('pets')
       .select('*')
       .eq('is_adopted', false)  // 只显示未被领养的
@@ -45,7 +45,7 @@ async function loadAvailablePets() {
     const searchTerm = document.getElementById('search').value.toLowerCase()
     const petType = document.getElementById('petType').value
   
-    let query = supabase.from('pets').select('*').eq('is_adopted', false)
+    let query = window.supabase.from('pets').select('*').eq('is_adopted', false)
   
     if (searchTerm) {
       query = query.ilike('name', `%${searchTerm}%`)

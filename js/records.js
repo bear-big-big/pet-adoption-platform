@@ -1,7 +1,7 @@
 // 加载领养记录（关联宠物和领养人信息）
 async function loadAdoptionRecords() {
     // 1. 获取所有领养记录
-    const { data: adoptions, error } = await supabase
+    const { data: adoptions, error } = await window.supabase
       .from('adoptions')
       .select('*')
       .order('adoption_date', { ascending: false })
@@ -15,12 +15,12 @@ async function loadAdoptionRecords() {
     const petIds = adoptions.map(a => a.pet_id)
     const adopterIds = adoptions.map(a => a.adopter_id)
   
-    const { data: pets } = await supabase
+    const { data: pets } = await window.supabase
       .from('pets')
       .select('id, name')
       .in('id', petIds)
   
-    const { data: adopters } = await supabase
+    const { data: adopters } = await window.supabase
       .from('adopters')
       .select('id, name')
       .in('id', adopterIds)
