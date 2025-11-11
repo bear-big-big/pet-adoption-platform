@@ -354,7 +354,9 @@ main {
 .about-img {
   position: relative;
   width: 100%;
-  min-height: 500px;
+  min-height: 400px;
+  height: 100%;
+  aspect-ratio: 4 / 3;
   border-radius: 12px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   background-image: url('https://pet-adoption-platform.netlify.app/images/pet.webp');
@@ -559,6 +561,11 @@ footer {
   .pet-detail,
   .about-intro {
     grid-template-columns: 1fr;
+  }
+
+  .about-img {
+    min-height: 300px;
+    aspect-ratio: 16 / 9;
   }
 
   .features-grid {
