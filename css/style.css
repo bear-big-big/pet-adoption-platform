@@ -20,8 +20,10 @@ header {
 }
 
 header h1 {
-  color: #263238;
+  color: white;
   margin-bottom: 0.8rem;
+  font-size: 1.8rem;
+  font-weight: 600;
 }
 
 nav {
@@ -30,7 +32,7 @@ nav {
 }
 
 nav a {
-  color: #263238;
+  color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
   padding: 0.5rem 0;
   font-weight: 500;
@@ -99,11 +101,23 @@ main {
 
 .filter input,
 .filter select {
-  padding: 0.5rem;
+  padding: 0.75rem 1rem;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.filter select {
   flex: 1;
   min-width: 200px;
+}
+
+.filter input:focus,
+.filter select:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
 }
 
 /* 宠物列表样式 */
@@ -368,6 +382,81 @@ footer {
   transform: scale(1.2);
 }
 
+/* 空状态样式 */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.empty-state i {
+  font-size: 4rem;
+  color: #ccc;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.empty-state h3 {
+  color: #666;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.empty-state p {
+  color: #999;
+  font-size: 1rem;
+}
+
+/* 加载状态样式 */
+.loading-state {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.loading-state i {
+  font-size: 3rem;
+  color: #4CAF50;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.loading-state p {
+  margin-top: 1rem;
+  color: #666;
+}
+
+/* 筛选栏图标样式 */
+.filter {
+  position: relative;
+}
+
+.filter-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+
+.filter-wrapper i {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.filter-wrapper input {
+  padding-left: 2.5rem;
+  width: 100%;
+}
+
 /* 响应式适配 */
 @media (max-width: 768px) {
   .pet-detail,
@@ -389,7 +478,7 @@ footer {
     flex-direction: column;
   }
 
-  .filter input,
+  .filter-wrapper,
   .filter select {
     min-width: 100%;
   }

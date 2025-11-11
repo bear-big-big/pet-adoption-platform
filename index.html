@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>宠物领养平台 - 首页</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=1.1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -18,12 +18,15 @@
 
   <main>
     <section class="filter">
-      <input type="text" id="search" placeholder="搜索宠物名称...">
+      <div class="filter-wrapper">
+        <i class="fas fa-search"></i>
+        <input type="text" id="search" placeholder="搜索宠物名称..." autocomplete="off">
+      </div>
       <select id="petType">
         <option value="">所有类型</option>
-        <option value="猫">猫</option>
-        <option value="狗">狗</option>
-        <option value="其他">其他</option>
+        <option value="猫">🐱 猫</option>
+        <option value="狗">🐶 狗</option>
+        <option value="其他">🐾 其他</option>
       </select>
     </section>
 
