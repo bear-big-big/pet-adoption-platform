@@ -13,10 +13,22 @@ function showLoading() {
 async function loadAvailablePets() {
     showLoading()
     
+    // 先尝试获取所有数据，用于调试
+    const { data: allData, error: allError } = await window.supabase
+      .from('pets')
+      .select('*')
+    
+    console.log('所有宠物数据:', allData)
+    console.log('查询错误:', allError)
+    
+    // 然后查询未领养的宠物
     const { data, error } = await window.supabase
       .from('pets')
       .select('*')
       .eq('is_adopted', false)  // 只显示未被领养的
+  
+    console.log('未领养宠物数据:', data)
+    console.log('查询错误:', error)
   
     if (error) {
       console.error('获取宠物失败:', error)
@@ -26,8 +38,32 @@ async function loadAvailablePets() {
           <i class="fas fa-exclamation-triangle"></i>
           <h3>加载失败</h3>
           <p>${error.message || '无法获取宠物信息，请稍后重试'}</p>
+          <p style="margin-top: 1rem; font-size: 0.9rem; color: #999;">错误详情: ${JSON.stringify(error)}</p>
         </div>
       `
+      return
+    }
+  
+    // 如果查询结果为空，但所有数据不为空，说明可能是过滤条件问题
+    if ((!data || data.length === 0) && allData && allData.length > 0) {
+      console.warn('查询结果为空，但数据库中有数据。可能是 is_adopted 字段值的问题')
+      console.log('所有数据中的 is_adopted 值:', allData.map(p => ({ id: p.id, name: p.name, is_adopted: p.is_adopted, type: typeof p.is_adopted })))
+      
+      // 尝试使用字符串 'false' 或布尔值 false
+      const { data: data2 } = await window.supabase
+        .from('pets')
+        .select('*')
+        .or('is_adopted.eq.false,is_adopted.is.null')
+      
+      console.log('使用 or 查询的结果:', data2)
+      
+      if (data2 && data2.length > 0) {
+        renderPetList(data2)
+        return
+      }
+      
+      // 如果还是空，直接显示所有数据（临时方案）
+      renderPetList(allData.filter(p => !p.is_adopted || p.is_adopted === false || p.is_adopted === 'false'))
       return
     }
   
@@ -74,7 +110,11 @@ async function loadAvailablePets() {
     
     showLoading()
   
-    let query = window.supabase.from('pets').select('*').eq('is_adopted', false)
+    // 使用 or 查询来处理可能的布尔值类型问题
+    let query = window.supabase
+      .from('pets')
+      .select('*')
+      .or('is_adopted.eq.false,is_adopted.is.null')
   
     if (searchTerm) {
       query = query.ilike('name', `%${searchTerm}%`)
@@ -84,6 +124,8 @@ async function loadAvailablePets() {
     }
   
     const { data, error } = await query
+    
+    console.log('筛选结果:', data)
     
     if (error) {
       console.error('筛选失败:', error)

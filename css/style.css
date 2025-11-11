@@ -293,10 +293,20 @@ main {
   align-items: center;
 }
 
-.about-img img {
+.about-img {
+  position: relative;
   width: 100%;
+  min-height: 400px;
   border-radius: 12px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background-image: url('https://pet-adoption-platform.netlify.app/images/pet.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.about-img img {
+  display: none; /* 隐藏原图片，使用背景图片 */
 }
 
 .about-text h2,
