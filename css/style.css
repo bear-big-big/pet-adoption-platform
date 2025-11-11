@@ -429,12 +429,18 @@ main {
 
 /* 页脚样式 */
 footer {
-  background-color: #2E7D32;
-  color: white;
+  background-color: white;
+  color: #666;
   text-align: center;
   padding: 2rem;
   margin-top: auto;
   width: 100%;
+  border-top: 1px solid #e0e0e0;
+}
+
+footer p {
+  color: #666;
+  margin: 0;
 }
 
 .social-links {
@@ -445,12 +451,13 @@ footer {
 }
 
 .social-links a {
-  color: white;
+  color: #4CAF50;
   font-size: 1.5rem;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .social-links a:hover {
+  color: #2E7D32;
   transform: scale(1.2);
 }
 
